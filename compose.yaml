@@ -1,0 +1,5 @@
+# Lets `docker compose up` run from the repo root; services live in infra/.
+name: filing-thesis-engine
+
+include:
+  - infra/docker-compose.yml
