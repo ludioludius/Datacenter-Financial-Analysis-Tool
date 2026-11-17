@@ -5,11 +5,13 @@ description = "Tests AI-infrastructure investment theses against SEC filings."
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "alembic>=1.16",
+    "fte-api",
     "fte-core",
 ]
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.16.2",
     "pyright>=1.1.400",
     "pytest>=8.3",
     "ruff>=0.11",
@@ -19,10 +21,11 @@ dev = [
 package = false
 
 [tool.uv.workspace]
-members = ["packages/*"]
+members = ["packages/*", "services/*"]
 
 [tool.uv.sources]
 fte-core = { workspace = true }
+fte-api = { workspace = true }
 
 [tool.ruff]
 line-length = 100
@@ -31,13 +34,16 @@ target-version = "py312"
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["fte_core", "fte_api"]
+
 [tool.pyright]
 pythonVersion = "3.12"
 typeCheckingMode = "standard"
-include = ["packages"]
+include = ["packages", "services"]
 venvPath = "."
 venv = ".venv"
 
 [tool.pytest.ini_options]
-testpaths = ["packages"]
+testpaths = ["packages", "services"]
 addopts = "--import-mode=importlib"

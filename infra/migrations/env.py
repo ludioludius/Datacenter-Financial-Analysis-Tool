@@ -1,9 +1,10 @@
 from logging.config import fileConfig
 
 from alembic import context
+from sqlalchemy import create_engine, pool
+
 from fte_core.db.engine import database_url
 from fte_core.db.models import Base
-from sqlalchemy import create_engine, pool
 
 config = context.config
 
