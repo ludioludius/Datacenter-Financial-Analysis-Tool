@@ -3,7 +3,10 @@ name = "filing-thesis-engine"
 version = "0.1.0"
 description = "Tests AI-infrastructure investment theses against SEC filings."
 requires-python = ">=3.12,<3.13"
-dependencies = ["fte-core"]
+dependencies = [
+    "alembic>=1.16",
+    "fte-core",
+]
 
 [dependency-groups]
 dev = [
