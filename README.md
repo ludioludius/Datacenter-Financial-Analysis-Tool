@@ -9,9 +9,11 @@ Write a thesis in plain English; get a verdict on each claim with exact citation
 ## Running it
 
 ```sh
-docker compose up --build   # Postgres, migrations, API on http://localhost:8000
-curl localhost:8000/health
+docker compose up --build   # Postgres, migrations, API and web app
 ```
+
+- Web app: http://localhost:3000
+- API health: http://localhost:8000/health
 
 API docs are at http://localhost:8000/docs.
 
@@ -22,6 +24,7 @@ uv sync          # install Python deps
 docker compose up -d db                       # just the database
 uv run alembic upgrade head                   # apply migrations
 uv run uvicorn fte_api.main:app --reload      # API with auto-reload
+cd apps/web && npm install && npm run dev     # web app on :3000
 uv run ruff check .
 uv run pyright
 uv run pytest
