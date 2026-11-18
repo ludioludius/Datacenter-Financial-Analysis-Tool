@@ -9,6 +9,7 @@ Write a thesis in plain English; get a verdict on each claim with exact citation
 ## Running it
 
 ```sh
+cp .env.example .env       # then fill in the keys you need
 docker compose up --build   # Postgres, migrations, API and web app
 ```
 
